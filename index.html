@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>GROCERY LIST</title>
+    <!--- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstracdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>-->
+    <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="table-responsive">
+            <h1>GROCERY LIST</h1></br>
+            <table class="table table-bordered table-striped" id="#GROCERY_TABLE">
+                <tr>
+                    <th>NO</th>
+                    <th>CATEGORY</th>
+                    <th>ITEM</th>
+                    <th>QUANTITY</th>
+                    <th>RATE</th>
+                    <th>DESCRIPTION</th>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $.getJSON("grocerylist.json",function(data){
+            var grocery_data='';
+            $.each(ReadableStreamDefaultReader,function(key,value)
+            {
+                grocery_data +='<tr>';
+                    grocery_data +='<td>'+value.NO+'</td>';
+                    grocery_data +='<td>'+value.CATEGORY+'</td>';
+                    grocery_data +='<td>'+value.ITEM+'</td>';
+                    grocery_data +='<td>'+value.QUANTITY+'</td>';
+                    grocery_data +='<td>'+value.RATE+'</td>';
+                    grocery_data +='<td>'+value.DESCRIPTION+'</td>';
+                    grocery_data +='</tr>';
+            
+            
+            });
+            $('#GROCERY_TABLE').append(grocery_data);
+
+        });
+    });
+
+</script>
